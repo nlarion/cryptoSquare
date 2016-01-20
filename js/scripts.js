@@ -8,9 +8,35 @@ var stripText = function(message){
 var cryptoSquare = function(message){
   message = stripText(message);
   message = makeColumn(message);
+  var bigArray = [];
   //do something to array to make the coded message.
+  for(var i = 0; i < message.length; i++){
+    var splitArray = message[i].split("");
+    bigArray.push(splitArray);
+  }
+  var combined = "";
+  while (bigArray[0].length > 0){
 
-  return message;
+    for(var i = 0; i <bigArray.length; i++){
+      if(bigArray[i][0]){
+        combined = combined.concat(bigArray[i][0]);
+        bigArray[i].shift();
+      }
+    }
+
+  }
+  return splitter(combined, 5).join(' ');
+
+};
+
+function splitter(str, n) {
+    var ret = [];
+    var i;
+    var len;
+    for(i = 0, len = str.length; i < len; i += n) {
+       ret.push(str.substr(i, n))
+    }
+    return ret
 };
 
 var columnCount =  function(message){
@@ -41,7 +67,7 @@ var makeColumn = function(message){
 $(document).ready(function() {
   $("form").submit(function(event) {
     var messageInput =$("input#message").val();
-    var result = cryptoSquare("messageInput");
+    var result = cryptoSquare(messageInput);
 
     $("#result").text(result);
 

@@ -25,6 +25,6 @@ describe("makeColumn", function(){
 
 describe("cryptoSquare", function(){
   it("reads down columns from left to right and writes characters into groups of 5", function(){
-    expect(cryptoSquare("This isn't some message"))).to.equal("tsmsh neait mgsse eios");
+    expect(cryptoSquare("This isn't some message")).to.equal("tsmsh neait mgsse eios");
   });
 });
