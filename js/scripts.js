@@ -16,27 +16,21 @@ var cryptoSquare = function(message){
   }
   var combined = "";
   while (bigArray[0].length > 0){
-
     for(var i = 0; i <bigArray.length; i++){
       if(bigArray[i][0]){
         combined = combined.concat(bigArray[i][0]);
         bigArray[i].shift();
       }
     }
-
   }
-  return splitter(combined, 5).join(' ');
 
-};
-
-function splitter(str, n) {
-    var ret = [];
-    var i;
-    var len;
-    for(i = 0, len = str.length; i < len; i += n) {
-       ret.push(str.substr(i, n))
-    }
-    return ret
+  var fiveCharacters = [];
+  for(var i = 0; i<combined.length;i+=5){
+    fiveCharacters.push(combined.substr(i,5));
+  }
+  var stringAnswer = fiveCharacters.join(" ");
+  return stringAnswer;
+  
 };
 
 var columnCount =  function(message){
